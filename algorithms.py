@@ -222,8 +222,13 @@ def paper_doll(string):
 		result += char*3
 	return result
 
-=================
-BLACKJACK: Given three integers between 1 and 11, if their sum is less than or equal to 21, return their sum. If their sum exceeds 21 and there's an eleven, reduce the total sum by 10. Finally, if the sum (even after adjustment) exceeds 21, return 'BUST'
+#==========
+#BLACKJACK: 
+# Given three integers between 1 and 11, 
+# if their sum is less than or equal to 21, 
+# return their sum. If their sum exceeds 21 
+# and there's an eleven, reduce the total sum by 10. 
+# Finally, if the sum (even after adjustment) exceeds 21, return 'BUST'
 
 def myfunc(int1,int2,int3):
 
@@ -238,24 +243,27 @@ def myfunc(int1,int2,int3):
         
     elif sum1 > 21 or sum2 > 21:
         return 'BUST'
-    
 myfunc(9,9,11)
 
+#Method #2:
 
-   Method #2:
-
-	def blackjack(a,b,c):
-		if sum ([a,b,c]) <= 21: #notice the 'sum' keyword
-			return sum([a,b,c])
-		elif 11 in [a,b,c] and sum([a,b,c]) - 10 <= 21:
-		    #you could make it 31, for the 10 you subtract
-			return sum([a,b,c]) - 10     
-		else: #this is all that's left to happen
-			return "BUST”
+def blackjack(a,b,c):
+    if sum ([a,b,c]) <= 21: #notice the 'sum' keyword
+        return sum([a,b,c])
+    elif 11 in [a,b,c] and sum([a,b,c]) - 10 <= 21:
+        #you could make it 31, for the 10 you subtract
+        return sum([a,b,c]) - 10     
+    else: #this is all that's left to happen
+        return 'BUST'
 		
 	
-===============
-SUMMER OF '69: Return the sum of the numbers in the array, except ignore sections of numbers starting with a 6 and extending to the next 9 (every 6 will be followed by at least one 9). Return 0 for no numbers.
+#=============
+#SUMMER OF '69: 
+# Return the sum of the numbers in the array, 
+# except ignore sections of numbers starting 
+# with a 6 and extending to the next 9 
+# (every 6 will be followed by at least one 9). 
+# Return 0 for no numbers.
 
 def myfunc(arr):
 
@@ -282,47 +290,53 @@ def myfunc(arr):
     
 myfunc([2,1,6,9,11])
 
-  #Method 2: #tested: this does work. The True boolean is a tough concept to work through.
+#Method 2: #tested: this does work. 
+# The True boolean is a tough concept to work through.
 
-	total = 0
-	add = True   # you can think of “add” as built into the for loop.  This provides a very 		         # useful way of manipulating the while loop inside the for loop 
-	for num in arr:
-		while add:
-			if num != 6:
-				total += num
-				break
-#the "break" above pulls you out of the while loop to restart it each time. I think you can do this #because "add" has been established as True. This is clever, because it provides a check on #every number.
-			else:
-				add = False
-# if it's False like above, then the while not add loop below executes:		
-		
-		while not add:
-			if num != 9:
+
+def myfunc(arr):
+
+    total = 0
+    add = True   # you can think of “add” as built into the for loop.  
+            #This provides a very useful way of manipulating the 
+            # while loop inside the for loop 
+    for num in arr:
+        while add:
+            if num != 6:
+                total += num
+                break
+        #the "break" above pulls you out of the while loop to restart it each time. I think you can do this #because "add" has been established as True. This is clever, because it provides a check on #every number.
+            else:
+                add = False
+        # if it's False like above, then the while not add loop below executes:			
+        while not add:
+            if num != 9:
                 break
 
-# Above, you are checking each number (but not adding them) each time, with the for loop on the outside propelling things along.
-
-			else:
-				add = True
-				break
+    # Above, you are checking each number (but not adding them) each time, 
+    # with the for loop on the outside propelling things along.
+        else:
+            add = True
+            break
 
 # above (implicitly) if the number is 9, you "turn on" the add again and resume
 
-	return total
+        return total
 		
 # when the outer for loop is out of gas, return the total, per the requirement.
 
 # the break statements are only connected to the while loops they are in. 
-   
 
-SPY GAME: Write a function that takes in a list of integers and returns True if it contains 007 in order
 
-Note: the commented out section would require direct contiguity between the characters, but that wasn't the requirement.
+#SPY GAME: 
+# Write a function that takes in a list of integers 
+# and returns True if it contains 007 in order
+
+#Note: the commented out section below would require direct 
+# contiguity between the characters, but that wasn't the requirement.
 
 def spy_game(arr):
-
     arr2 = []
-    
     #for i in range(0, len(arr)):
     #    if arr[i] == 0:
     #        arr2.append(arr[i])
@@ -353,24 +367,25 @@ def spy_game(arr):
         
 spy_game([1,7,2,0,4,5,0])
 
-   #Method 2:
-	
-   def spy_game(*nums):
- 
-	code = [0,0,7,'x']
 
-	for num in nums:
-		if num == code[0]:
-			code.pop(0)
-			
-	return len(code) == 1
+#Method 2:
+	
+def spy_game(*nums):
+
+    code = [0,0,7,'x']
+
+    for num in nums:
+        if num == code[0]:
+            code.pop(0)
+            
+    return len(code) == 1
 
 	# in other words, you are popping off index [0] each time and checking each popped 	# item against code. When you've exhausted it down to one item(i.e., "len(code) == 1"), 	# it will return boolean True as a default if everything previous checked out; 'x' is that 
 	# placeholder indicating that everything else was in code was evacuated.
 
-================
-COUNTING PRIMES: 
-Couldn't do this one, but here's the answer:
+#===============
+#COUNTING PRIMES: 
+#Couldn't do this one, but here's the answer:
 
 def get_primes(n):
     numbers = set(range(n, 1, -1))
@@ -382,42 +397,42 @@ def get_primes(n):
     return primes
 
 
-   #Method 2:
+#Method 2:
 
-	def count_primes(num):
+def count_primes(num):
 		
 	#check for 0 or 1 input
-		if num < 2:
-			return 0
+    if num < 2:
+        return 0
 	
 	##################
 		#2 or greater
 	##################
-		primes = [2]
+	primes = [2]
 	# Counter going up to input num
-		x = 3
+	x = 3
 	# x is going through every int up to num
-		while x <= num:
-			for y in range(3,x,2)
-				if x%y == 0:
-					x += 2
-					break
+    while x <= num:
+        for y in range(3,x,2):
+            if x%y == 0:
+                x += 2
+                break
 
-	# note you started on 3. This is good, because you can just add 2 and then 
-           # automatically focus on the odds all the way up (evens can't be primes).
-           # Also realize you are testing an odd Y against an odd X, courtesy of the embedded
-	# for loop.
+	# note you started on 3. This is good, because you can just add 2 
+    # and then automatically focus on the odds all the way up 
+    # (evens can't be primes). Also realize you are testing an odd Y 
+    # against an odd X, courtesy of the embedded for loop.
 
 	# use a for/else statement, shown below:
 
-			else:
-				primes.append(x)
-				x += 2
+        else:
+            primes.append(x)
+            x += 2
 
 	# If you went through the for loop and never broke, then the else statement would   	   execute. 
 
-	   print(primes)
-	   return len(primes)
+    print(primes)
+    return len(primes)
 
 	# directly above, you are modulus testing each 'x' (which is standing in for num) 	
 	# against a 'y' option. Computationally, it must be hugely expensive, but it will 	
